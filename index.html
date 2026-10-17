@@ -150,10 +150,13 @@
     </footer>
 
 
+
 <script>
     const phoneInput = document.getElementById("phone");
     const bookingForm = document.getElementById("booking-form");
     const formMessage = document.getElementById("form-message");
+
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmWIJBYmBPyOqY_S92c5_FY9eB9cURzn4B5L6565vzBojdfiFSYEPIX7FFhJvcloHOrQ/exec";
 
     phoneInput.addEventListener("input", function () {
         const raw = phoneInput.value;
@@ -172,14 +175,11 @@
 
         if (digits.length === 0) {
             phoneInput.value = "";
+            formMessage.textContent = "";
             return;
         }
 
-        let formatted = "+7";
-
-        if (digits.length > 0) {
-            formatted += " (" + digits.slice(0, 3);
-        }
+        let formatted = "+7 (" + digits.slice(0, 3);
 
         if (digits.length >= 3) {
             formatted += ")";
@@ -201,20 +201,51 @@
         formMessage.textContent = "";
     });
 
-    bookingForm.addEventListener("submit", function (event) {
+    bookingForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const digits = phoneInput.value.replace(/\D/g, "");
 
         if (digits.length !== 11 || !digits.startsWith("7")) {
-            formMessage.textContent =
-                "Введите полный номер телефона.";
+            formMessage.textContent = "Введите полный номер телефона.";
             phoneInput.focus();
             return;
         }
 
-        formMessage.textContent =
-            "Проверка пройдена! Отправка заявок пока не подключена.";
+        if (SCRIPT_URL === "PASTE_YOUR_WEB_APP_URL_HERE") {
+            formMessage.textContent = "Сначала укажите URL обработчика.";
+            return;
+        }
+
+        const submitButton = bookingForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = "Отправляем...";
+        formMessage.textContent = "";
+
+        try {
+            await fetch(SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                body: JSON.stringify({
+                    name: document.getElementById("name").value.trim(),
+                    phone: phoneInput.value,
+                    service: document.getElementById("service").value
+                })
+            });
+
+            formMessage.textContent =
+                "Запрос отправлен. Проверьте Telegram, чтобы подтвердить получение заявки.";
+            bookingForm.reset();
+        } catch (error) {
+            formMessage.textContent =
+                "Не удалось отправить запрос. Попробуйте ещё раз или позвоните нам.";
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "Отправить заявку";
+        }
     });
 </script>
 </body>
