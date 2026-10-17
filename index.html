@@ -8,20 +8,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+  
     <header class="header">
         <a class="logo" href="#">АВТО<span>ПРОФИ</span></a>
 
         <nav class="nav">
             <a href="#services">Услуги</a>
+            <a href="#gallery">Галерея</a>
             <a href="#about">О нас</a>
             <a href="#contacts">Контакты</a>
         </nav>
 
-        <a class="phone" href="tel:+79990000000">
-            +7 (999) 000-00-00
-        </a>
+        <div class="header-actions">
+            <a class="phone" href="tel:+79990000000">
+                +7 (999) 000-00-00
+            </a>
+
+            <a class="button primary header-button" href="#contacts">
+                Записаться
+            </a>
+        </div>
     </header>
+
 
     <main>
         <section class="hero">
@@ -116,6 +124,41 @@
                 </article>
             </div>
         </section>
+        
+        <section class="gallery" id="gallery">
+            <p class="eyebrow">НАША РАБОТА</p>
+            <h2>Автосервис изнутри</h2>
+            <p class="gallery-description">
+                Современный подход к диагностике, ремонту и обслуживанию автомобилей.
+            </p>
+
+            <div class="gallery-grid">
+                <article class="gallery-card">
+                    <img
+                        src="images/workshop.jpeg"
+                        alt="Рабочая зона автосервиса"
+                        loading="lazy"
+                    >
+                    <div class="gallery-caption">
+                        <h3>Рабочее пространство</h3>
+                        <p>Всё необходимое для обслуживания автомобиля.</p>
+                    </div>
+                </article>
+
+                <article class="gallery-card">
+                    <img
+                        src="images/mechanic.jpeg"
+                        alt="Механик занимается ремонтом автомобиля"
+                        loading="lazy"
+                    >
+                    <div class="gallery-caption">
+                        <h3>Внимание к деталям</h3>
+                        <p>Диагностика и проверка основных систем автомобиля.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <section class="about" id="about">
             <p class="eyebrow">О НАС</p>
             <h2>Заботимся о вашем автомобиле</h2>
