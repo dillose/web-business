@@ -149,14 +149,16 @@
         Учебный проект сайта автосервиса «АВТОПРОФИ».
     </footer>
 
+
 <script>
     const phoneInput = document.getElementById("phone");
+    const bookingForm = document.getElementById("booking-form");
+    const formMessage = document.getElementById("form-message");
 
     phoneInput.addEventListener("input", function () {
         const raw = phoneInput.value;
         let digits = raw.replace(/\D/g, "");
 
-        // Убираем код страны, если пользователь вставил полный номер
         if (raw.trim().startsWith("+7")) {
             digits = digits.slice(1);
         } else if (
@@ -166,17 +168,18 @@
             digits = digits.slice(1);
         }
 
-        // Максимум 10 цифр номера
         digits = digits.slice(0, 10);
 
-        // Если поле очищено, оставляем его пустым
         if (digits.length === 0) {
             phoneInput.value = "";
             return;
         }
 
-        // Формируем российский номер
-        let formatted = "+7 (" + digits.slice(0, 3);
+        let formatted = "+7";
+
+        if (digits.length > 0) {
+            formatted += " (" + digits.slice(0, 3);
+        }
 
         if (digits.length >= 3) {
             formatted += ")";
@@ -195,7 +198,25 @@
         }
 
         phoneInput.value = formatted;
+        formMessage.textContent = "";
+    });
+
+    bookingForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const digits = phoneInput.value.replace(/\D/g, "");
+
+        if (digits.length !== 11 || !digits.startsWith("7")) {
+            formMessage.textContent =
+                "Введите полный номер телефона.";
+            phoneInput.focus();
+            return;
+        }
+
+        formMessage.textContent =
+            "Проверка пройдена! Отправка заявок пока не подключена.";
     });
 </script>
 </body>
 </html>
+
