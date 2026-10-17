@@ -91,11 +91,55 @@
             </div>
         </section>
 
-        <section class="contacts" id="contacts">
+                <section class="contacts" id="contacts">
             <p class="eyebrow">МЫ НА СВЯЗИ</p>
             <h2>Запишитесь на обслуживание</h2>
-            <p>Позвоните нам, чтобы обсудить задачу и выбрать удобное время.</p>
-            <a class="button primary" href="tel:+79990000000">
+            <p>Оставьте заявку, и мы свяжемся с вами для уточнения деталей.</p>
+
+            <form class="booking-form" id="booking-form">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Например, Алексей"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Номер телефона</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="+7 (___) ___-__-__"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Какая услуга нужна?</label>
+                    <select id="service" name="service" required>
+                        <option value="">Выберите услугу</option>
+                        <option value="Диагностика">Диагностика</option>
+                        <option value="Ремонт">Ремонт</option>
+                        <option value="Техобслуживание">Техобслуживание</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                </div>
+
+                <button class="button primary" type="submit">
+                    Отправить заявку
+                </button>
+
+                <p class="form-message" id="form-message" aria-live="polite"></p>
+            </form>
+
+            <p class="contact-alternative">Или позвоните нам напрямую:</p>
+
+            <a class="button secondary" href="tel:+79990000000">
                 Позвонить в автосервис
             </a>
         </section>
