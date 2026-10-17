@@ -1,0 +1,290 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0c111b;
+    color: #ffffff;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.header {
+    min-height: 76px;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: #101827;
+    border-bottom: 1px solid #273143;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #f5a623;
+}
+
+.nav {
+    display: flex;
+    gap: 28px;
+    color: #c3cad6;
+}
+
+.nav a:hover {
+    color: #f5a623;
+}
+
+.phone {
+    font-weight: 700;
+}
+
+
+.hero {
+    min-height: 620px;
+    padding: 90px 7%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(12, 17, 27, 0.98) 0%,
+            rgba(12, 17, 27, 0.82) 48%,
+            rgba(12, 17, 27, 0.25) 100%
+        ),
+        url("images/car.jpeg") center / cover no-repeat;
+}
+
+
+.hero-content {
+    max-width: 760px;
+}
+
+.eyebrow {
+    color: #f5a623;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+h1 {
+    margin: 22px 0;
+    font-size: clamp(36px, 5vw, 62px);
+    line-height: 1.1;
+}
+
+h1 span {
+    color: #f5a623;
+}
+
+.description {
+    max-width: 540px;
+    color: #b7c0ce;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 22px;
+    border-radius: 7px;
+    font-weight: 700;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.primary {
+    background: #f5a623;
+    color: #111827;
+}
+
+.primary:hover {
+    background: #ffc15a;
+    transform: translateY(-2px);
+}
+
+.secondary {
+    border: 1px solid #526077;
+}
+
+.secondary:hover {
+    border-color: #f5a623;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 48px;
+}
+
+.features div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.features strong {
+    font-size: 21px;
+}
+
+.features span {
+    color: #9ba7b8;
+    font-size: 13px;
+}
+
+.services,
+.contacts {
+    padding: 75px 7%;
+}
+
+h2 {
+    margin: 12px 0 30px;
+    font-size: 34px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    padding: 26px;
+    border: 1px solid #2b3648;
+    border-radius: 12px;
+    background: #131c2a;
+}
+
+.service-card > span {
+    color: #f5a623;
+    font-weight: 700;
+}
+
+.service-card p,
+.contacts p {
+    color: #b7c0ce;
+    line-height: 1.7;
+}
+
+.contacts {
+    background: #111a29;
+}
+
+.contacts h2 {
+    max-width: 500px;
+}
+
+.contacts .button {
+    margin-top: 12px;
+}
+
+footer {
+    padding: 25px 7%;
+    color: #8f9bad;
+    font-size: 13px;
+    border-top: 1px solid #273143;
+}
+
+@media (max-width: 760px) {
+    .header {
+        flex-wrap: wrap;
+    }
+
+    .nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 14px;
+    }
+
+    .phone {
+        font-size: 14px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 70px 6%;
+    }
+
+    .features {
+        gap: 24px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services,
+    .contacts {
+        padding: 55px 6%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .phone {
+        font-size: 12px;
+    }
+
+    .nav {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 55px 5%;
+        background-position: 60% center;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .features {
+        gap: 20px;
+    }
+
+    .features strong {
+        font-size: 18px;
+    }
+}
+
